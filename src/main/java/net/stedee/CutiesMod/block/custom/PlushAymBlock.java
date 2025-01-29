@@ -66,8 +66,12 @@ public class PlushAymBlock extends HorizontalDirectionalBlock {
 
     @Override
     protected @NotNull InteractionResult useWithoutItem(@NotNull BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, @NotNull Player pPlayer, @NotNull BlockHitResult pHitResult) {
-        pLevel.playSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), ModdedSounds.PLUSHIE_SQUEAKS.get(), SoundSource.BLOCKS, 1f, 1f);
-        return InteractionResult.PASS;
+        if (!pPlayer.getAbilities().mayBuild) {
+            return InteractionResult.PASS;
+        } else {
+            pLevel.playSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), ModdedSounds.PLUSHIE_SQUEAKS.get(), SoundSource.BLOCKS, 1f, 1f);
+            return InteractionResult.SUCCESS;
+        }
     }
 
     @SuppressWarnings("null")
@@ -90,14 +94,8 @@ public class PlushAymBlock extends HorizontalDirectionalBlock {
 
     public static VoxelShape makeShape(){
         VoxelShape shape = Shapes.empty();
-        shape = Shapes.join(shape, Shapes.box(0.28125, 0, 0.21875, 0.71875, 0.25, 0.71875), BooleanOp.OR);
-        shape = Shapes.join(shape, Shapes.box(0.375, 0.25, 0.40625, 0.625, 0.5, 0.71875), BooleanOp.OR);
-        shape = Shapes.join(shape, Shapes.box(0.3125, 0.34375, 0.21875, 0.6875, 0.46875, 0.59375), BooleanOp.OR);
-        shape = Shapes.join(shape, Shapes.box(0.21875, 0.46875, 0.125, 0.78125, 1.03125, 0.6875), BooleanOp.OR);
-        shape = Shapes.join(shape, Shapes.box(0.21875, 1.001527852310184, 0.43608028494676543, 0.78125, 1.439027852310184, 0.43608028494676543), BooleanOp.OR);
-        shape = Shapes.join(shape, Shapes.box(0.0625, 0.47422557260098475, 0.3999644849921352, 0.9375, 0.7867255726009847, 0.3999644849921352), BooleanOp.OR);
-        shape = Shapes.join(shape, Shapes.box(0.4375, 0.34375, 0.53125, 0.5625, 0.59375, 0.65625), BooleanOp.OR);
-        shape = Shapes.join(shape, Shapes.box(0.125, -0.0625, 0.09375, 0.875, 0.125, 0.875), BooleanOp.OR);
+        shape = Shapes.join(shape, Shapes.box(0.125, 0, 0.125, 0.875, 0.1875, 0.875), BooleanOp.OR);
+        shape = Shapes.join(shape, Shapes.box(0.1875, 0.0625, 0.1875, 0.8125, 1.1875, 0.8125), BooleanOp.OR);
 
         return shape;
     }

@@ -7,7 +7,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.stedee.CutiesMod.CutiesMod;
-import net.stedee.CutiesMod.block.ModdedBlocks;
+import net.stedee.CutiesMod.block.ModdedPlushieBlocks;
 
 public class ModdedCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CutiesMod.MODID);
@@ -21,9 +21,9 @@ public class ModdedCreativeTabs {
 
     public static final RegistryObject<CreativeModeTab> PLUSHIES = CREATIVE_MODE_TABS.register("plushies", () -> CreativeModeTab.builder()
             .title(Component.translatable("creativetab.cuties_mod.plushies"))
-            .icon(() -> ModdedBlocks.PLUSH_AYM.get().asItem().getDefaultInstance())
+            .icon(() -> ModdedPlushieBlocks.PLUSH_AYM.get().asItem().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(ModdedBlocks.PLUSH_AYM.get().asItem());
+                output.accept(ModdedPlushieBlocks.PLUSH_AYM.get().asItem());
             }).build());
 
     public static void register(IEventBus eventBus) {
