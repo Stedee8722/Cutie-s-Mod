@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "cuties_mod:block/plush_aym",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "cuties_mod:block/plush_aym",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "cuties_mod:block/plush_aym"
+    },
+    "facing=west": {
+      "model": "cuties_mod:block/plush_aym",
+      "y": 90
+    }
+  }
+}

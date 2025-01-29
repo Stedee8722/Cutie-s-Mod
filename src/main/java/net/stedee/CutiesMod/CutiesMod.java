@@ -12,8 +12,10 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.stedee.CutiesMod.block.ModdedBlocks;
 import net.stedee.CutiesMod.item.ModdedCreativeTabs;
 import net.stedee.CutiesMod.item.ModdedItems;
+import net.stedee.CutiesMod.sound.ModdedSounds;
 import org.slf4j.Logger;
 
 @Mod(CutiesMod.MODID)
@@ -25,8 +27,12 @@ public class CutiesMod {
         IEventBus modEventBus = context.getModEventBus();
         modEventBus.addListener(this::commonSetup);
 
-        ModdedItems.ITEMS.register(modEventBus);
-        ModdedCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
+        ModdedBlocks.register(modEventBus);
+        ModdedItems.register(modEventBus);
+
+        ModdedCreativeTabs.register(modEventBus);
+
+        ModdedSounds.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 

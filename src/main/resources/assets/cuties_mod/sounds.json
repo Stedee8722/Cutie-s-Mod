@@ -1,0 +1,10 @@
+{
+  "plushie_squeaks": {
+    "subtitle": "sounds.cuties_mod.plushie_squeaks",
+    "sounds": [
+      "cuties_mod:squeak1",
+      "cuties_mod:squeak2",
+      "cuties_mod:squeak3"
+    ]
+  }
+}

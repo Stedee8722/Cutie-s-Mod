@@ -1,7 +1,12 @@
 {
   "item.cuties_mod.moon_staff": "Moon Staff",
+  "item.cuties_mod.plush_aym": "Plush Aym",
 
   "tooltip.cuties_mod.moon_staff": "§kthe cutie §rStaff of §4Aym, Second Son §rof §7Forneus§r §kthe cutie",
+  "tooltip.cuties_mod.plush_aym": "§4Second Son §rof §7Forneus§r, §mCutie Patootie :3",
 
-  "creativetab.cuties_mod.weapons": "Weapons"
+  "creativetab.cuties_mod.weapons": "Weapons",
+  "creativetab.cuties_mod.plushies": "Plushies",
+
+  "sounds.cuties_mod.plushie_squeaks": "Plushie squeaks"
 }
