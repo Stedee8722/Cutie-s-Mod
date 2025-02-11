@@ -6,10 +6,12 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -112,5 +114,12 @@ public class PlushAymBlock extends HorizontalDirectionalBlock {
             return Blocks.AIR.defaultBlockState();
         }
         return super.updateShape(pState, pLevel, pScheduledTickAccess, pPos, pDirection, pNeighborPos, pNeighborState, pRandom);
+    }
+
+    @Override
+    protected float getDestroyProgress(@NotNull BlockState pState, Player pPlayer, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos) {
+        if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).is(Items.SHEARS))
+            return 1;
+        return super.getDestroyProgress(pState, pPlayer, pLevel, pPos);
     }
 }
