@@ -116,10 +116,18 @@ public class PlushAymBlock extends HorizontalDirectionalBlock {
         return super.updateShape(pState, pLevel, pScheduledTickAccess, pPos, pDirection, pNeighborPos, pNeighborState, pRandom);
     }
 
+    @SuppressWarnings("UnstableApiUsage")
     @Override
-    protected float getDestroyProgress(@NotNull BlockState pState, Player pPlayer, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos) {
-        if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).is(Items.SHEARS))
-            return 1;
-        return super.getDestroyProgress(pState, pPlayer, pLevel, pPos);
+    protected float getDestroyProgress(@NotNull BlockState pState, @NotNull Player pPlayer, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos) {
+        float f = pState.getDestroySpeed(pLevel, pPos);
+        if (f == -1.0F) {
+            return 0.0F;
+        } else {
+            int i = net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(pState, pPlayer) ? 30 : 100;
+            if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).is(Items.SHEARS)) {
+                i = i - 29;
+            }
+            return pPlayer.getDestroySpeed(pState, pPos) / f / (float)i;
+        }
     }
 }
